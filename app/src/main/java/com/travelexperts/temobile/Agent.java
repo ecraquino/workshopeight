@@ -1,10 +1,23 @@
+/*
+ *  Ref: PROJ207.W3
+ *  Application Name: Android Application
+ *  Description: This program controls the Main Activity View
+ *  Module: Main Activity Controller
+ *  Author: Elmer Raquino
+ *  Date Created: Sep 2017
+ *  Version 2.0
+ *
+ */
+
 package com.travelexperts.temobile;
+
+import java.io.Serializable;
 
 /**
  * Created by 331426 on 9/25/2017.
  */
 
-public class Agent{
+public class Agent implements Serializable {
     int agentId;
     String agtFirstName;
     String agtMiddleInitial;

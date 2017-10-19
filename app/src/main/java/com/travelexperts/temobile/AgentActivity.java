@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +23,11 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class AgentActivity extends Activity {
+    ArrayAdapter<Agent> adapter;
     ListView lvAgents;
-//    Button btnBack;
     StringBuffer sb = new StringBuffer();
+    String teServer=new TEServer().getServerName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,33 +35,29 @@ public class AgentActivity extends Activity {
 
         lvAgents = findViewById(R.id.lvAgents);
         new GetAgents().execute();
-//        btnBack=findViewById(R.id.btnBack);
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-    }
 
+        lvAgents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent=new Intent(getApplicationContext(),AgentDetailsActivity.class);
+                intent.putExtra("agentd", adapter.getItem(position));
+                startActivity(intent);
+            }
+        });
+    }
 
     class GetAgents extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... voids) {
             URL url = null;
             try {
-                //url = new URL("http://travelexperts.ddns.net:8080/workshopseven/webapi/agents");
-                url = new URL("http://travelexperts.ddns.net:8080/TEdata/cal/agents");
+                url = new URL(teServer+"/agents");
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-
                 String json;
-
                 while ((json = br.readLine()) != null)
                 {
                     sb.append(json);
                 }
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -73,24 +70,28 @@ public class AgentActivity extends Activity {
             super.onPostExecute(aVoid);
             //JSONObject jsonObject=new JSONObject();
             ArrayList alist=new ArrayList();
-            ArrayAdapter<Agent> aadapter=new ArrayAdapter<Agent>(getApplicationContext(),android.R.layout.simple_list_item_1,alist);
-
+            //ArrayAdapter<Agent> aadapter=new ArrayAdapter<Agent>(getApplicationContext(),android.R.layout.simple_list_item_1,alist);
+            adapter=new ArrayAdapter<Agent>(AgentActivity.this,android.R.layout.simple_list_item_1,alist);
             try {
                 JSONArray jsonArray= new JSONArray(sb.toString());
                 for (int i=0;i<jsonArray.length();i++){
                     JSONObject c = jsonArray.getJSONObject(i);
-
-                    //Toast t=Toast.makeText(com.travelexperts.temobile.AgentActivity.this,c.getString("AgtFirstName"),Toast.LENGTH_LONG);
-                    //t.show();
-
-                    Agent ag=new Agent(c.getInt("AgentId"),c.getString("AgtFirstName"),sb.toString(),c.getString("AgtLastName"),c.getString("AgtBusPhone"),c.getString("AgtEmail"),c.getString("AgtPosition"),c.getInt("AgencyId"));
+                    //Toast.makeText(com.travelexperts.temobile.AgentActivity.this,c.getString("AgtFirstName"),Toast.LENGTH_LONG).show();
+                    Agent ag=new Agent(
+                          c.getInt("agentId"),
+                          c.getString("agtFirstName"),
+                          c.getString("agtMiddleInitial"),
+                          c.getString("agtLastName"),
+                          c.getString("agtBusPhone"),
+                          c.getString("agtEmail"),
+                          c.getString("agtPosition"),
+                          c.getInt("agencyId"));
                     alist.add(ag);
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            lvAgents.setAdapter(aadapter);
+            lvAgents.setAdapter(adapter);
         }
     }
 }

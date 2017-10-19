@@ -3,19 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.travelexperts.temobile.AgentUpdateActivity">
 
     <RelativeLayout
-        android:layout_width="575dp"
-        android:layout_height="634dp"
+        android:layout_width="525dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="100dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="100dp">
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49">
 
         <!-- Agent First Name -->
         <RelativeLayout
@@ -47,14 +50,14 @@
             android:layout_marginStart="21dp"
             android:layout_toEndOf="@+id/relativeLayout1a">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtFirstName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentFirstName"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <!-- Agent Middle Initial -->
@@ -86,14 +89,14 @@
             android:layout_alignBottom="@+id/relativeLayout2a"
             android:layout_alignStart="@+id/relativeLayout1b">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtMiddleInitial"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentMiddleInitial"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <!-- Agent Last Name -->
@@ -125,14 +128,14 @@
             android:layout_alignBottom="@+id/relativeLayout3a"
             android:layout_alignStart="@+id/relativeLayout2b">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtLastName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentLastName"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <!-- Agent Bus Phone -->
@@ -164,14 +167,14 @@
             android:layout_alignBottom="@+id/relativeLayout4a"
             android:layout_alignStart="@+id/relativeLayout3b">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtBusPhone"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentBusPhone"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <!-- Agent Email -->
@@ -203,14 +206,14 @@
             android:layout_alignBottom="@+id/relativeLayout5a"
             android:layout_alignStart="@+id/relativeLayout4b">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentEmail"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <!-- Agent Position -->
@@ -242,14 +245,14 @@
             android:layout_alignBottom="@+id/relativeLayout6a"
             android:layout_alignStart="@+id/relativeLayout5b">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtPosition"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentPosition"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <!-- Agent Agency -->
@@ -271,6 +274,7 @@
                 android:text="Agency"
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -281,14 +285,43 @@
             android:layout_alignBottom="@+id/relativeLayout7a"
             android:layout_alignStart="@+id/relativeLayout6b">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtAgency"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="AgentAgency"
                 android:textColor="@android:color/holo_blue_light"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout8a"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/relativeLayout7b"
+            android:layout_alignStart="@+id/relativeLayout7a">
+
+            <Button
+                android:id="@+id/btnPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PASSWORD" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relativeLayout8b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/relativeLayout8a"
+            android:layout_alignBottom="@+id/relativeLayout8a"
+            android:layout_alignStart="@+id/relativeLayout7b">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SAVE DETAILS" />
         </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

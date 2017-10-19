@@ -4,22 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/packages_mdpi"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/packages_mdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:icon="@drawable/booking_mdpi"
-            android:screenOrientation="portrait">
+        <activity android:name=".StartupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,20 +19,35 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:icon="@drawable/booking_mdpi"
+            android:label="Travel Experts" />
+        <activity
             android:name=".AgentActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:icon="@drawable/agent_mdpi"
             android:label="Agents List" />
         <activity
+            android:name=".AgentDetailsActivity"
+            android:icon="@drawable/agent_mdpi"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".CustomerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:icon="@drawable/customer_mdpi"
             android:label="Customers List" />
-        <activity android:name=".AgentDetailsActivity" />
-        <activity android:name=".CustomerDetailsActivity"
-            android:screenOrientation="portrait"
-            android:icon="@drawable/customer_mdpi">
-        </activity>
+        <activity
+            android:name=".CustomerDetailsActivity"
+            android:icon="@drawable/customer_mdpi"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PopupLogin"
+            android:icon="@drawable/customer_mdpi"/>
+        <activity
+            android:name=".AgentUpdateActivity"
+            android:icon="@drawable/agent_mdpi"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SignInActivity" />
     </application>
 
 </manifest>

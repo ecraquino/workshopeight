@@ -27,6 +27,7 @@ public class CustomerActivity extends Activity {
     ArrayAdapter<Customer> adapter;
     ListView lvCustomers;
     StringBuffer sb = new StringBuffer();
+    String teServer=new TEServer().getServerName2();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +48,13 @@ public class CustomerActivity extends Activity {
 
     }
 
-    class GetCustomers extends AsyncTask<Void, Void, Void>
-    {
+    class GetCustomers extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
             URL url = null;
             try {
-                url = new URL("http://travelexperts.ddns.net:8080/TEdata/cust/customers");
+
+                url = new URL(teServer+"/customers");
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 
                 String json;
@@ -77,8 +78,8 @@ public class CustomerActivity extends Activity {
             //JSONObject jsonObject=new JSONObject();
             ArrayList list=new ArrayList();
             //ArrayAdapter<Customer>
-            adapter=new ArrayAdapter<Customer>(getApplicationContext(),android.R.layout.simple_list_item_1,list);
-
+            //adapter=new ArrayAdapter<Customer>(getApplicationContext(),android.R.layout.simple_list_item_1,list);
+            adapter=new ArrayAdapter<Customer>(CustomerActivity.this,android.R.layout.simple_list_item_1,list);
             try {
                 JSONArray jsonArray= new JSONArray(sb.toString());
                 for (int i=0;i<jsonArray.length();i++){
